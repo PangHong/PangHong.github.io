@@ -1,8 +1,4 @@
 @charset 'UTF-8';
-body{
-    z-index: 1;
-    color: white;
-}
 #background-loader {
     position: absolute;
     top: 0;
@@ -14,7 +10,6 @@ body{
     background-color: #140606;
     -webkit-transform: translateZ(0);
     opacity: .5;
-    z-index: 0;
 }
 .throbber {
     position: absolute;
