@@ -1,0 +1,64 @@
+<html>
+	<head>
+		<meta charset="utf-8">
+	</head>
+	<body>
+		<div id="history_year_search">
+			<h1>Translate Christian Calendar to Chinese Calendar</h1>
+			<p>Input: Christian Calendar e.g. 1898.</p>
+			<form id="form">
+				<input id="input">
+				<button id="translate_btn">Translate</button>
+			</form>
+			<p>Output: Chinese Calendar e.g. the 24th year of the reign of Emperor Guangxu of Qing Dynasty</p>
+			<p id="translated_result"></p>
+		</div>
+	</body>
+	<script>
+		var form = document.getElementById("form");
+		var result = document.getElementById("translated_result");
+		result.innerText = "Result is ...";
+		var time_year = [1616,1627,1636,1644,1662,1723,1736,1796,1821,1851,1862,1875,1909,1911];
+		var emperor_name = ["TianMing","TianCong","ChongDe","ShunZhi","KangXi","YongZheng","QianLong","JiaQing","DaoGuang","XianFeng","TongZhi","GuangXu","XuanTong"];
+		console.log(emperor_name.length);
+		function get_index(input_year, time_year){
+			var size = time_year.length;
+			for(var i = 0; i < size; i++){
+				if(time_year[i] <= input_year && time_year[i+1] > input_year){
+					return i;
+				}
+				// speacial for last year of Empire
+				if(i == size-1 && input_year == time_year[i]){
+					return i-1;
+				}
+			}
+		}
+		function updateResult(event){
+			event.preventDefault();
+			// get input data
+			var input_data = document.getElementById("input").value;
+			var input_year = parseInt(input_data);
+			// translate to Chinese Calendar
+			// update search result according new date input;
+		var time_year = [1616,1627,1636,1644,1662,1723,1736,1796,1821,1851,1862,1875,1909,1911];
+		var emperor_name = ["TianMing","TianCong","ChongDe","ShunZhi","KangXi","YongZheng","QianLong","JiaQing","DaoGuang","XianFeng","TongZhi","GuangXu","XuanTong"];
+			var index = get_index(input_year, time_year);
+			var emperor_name = emperor_name[index];
+			var order_year_number = input_year - time_year[index] + 1;
+			var dynasty = "Qing";
+			result.innerText = "Result is the " + order_year_number + 
+" the year of the reign of Emperor "+ emperor_name + " of " + dynasty + " Dynasty";
+
+		}
+		form.addEventListener("submit", updateResult, false);
+	</script>
+</html>
+
+
+
+
+
+
+
+
+
